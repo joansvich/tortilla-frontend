@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 class CreateForm extends Component {
 
   state = {
-    name: '',
-    special: '',
-    size: '',
-    imageUrl: ''
+    name: this.props.initialValue.name || '',
+    special: this.props.initialValue.special || '',
+    size: this.props.initialValue.size || '',
+    imageUrl: this.props.initialValue.imageUrl || '',
   }
 
   handleChange = (e) => {
@@ -18,12 +18,14 @@ class CreateForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.onSubmit(this.state);
-    this.setState({
-      name: '',
-      special: '',
-      size: '',
-      imageUrl: '',
-    })
+    if (!this.props.initialValue) {
+      this.setState({
+        name: '',
+        special: '',
+        size: '',
+        imageUrl: '',
+      })
+    }
   }
 
   render() {

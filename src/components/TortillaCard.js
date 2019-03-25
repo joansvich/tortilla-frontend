@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 
 class TortillaCard extends Component {
   render() {
     const {data: {_id, name, special, size, imageUrl}, onDelete} = this.props;
     return (
         <li>
-          <h2>{name}</h2>
+          <Link to={`/tortillas/${_id}`}>{name}</Link>
           <button onClick={() => onDelete(_id)}>Delete</button>
         </li>
     );
